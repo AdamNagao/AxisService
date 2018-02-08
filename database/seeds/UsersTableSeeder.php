@@ -36,6 +36,9 @@ class UsersTableSeeder extends Seeder
             'state'=>'California',
             'phonenumber'=>'3235607784',
             'role' => '1',
+            'licenseNum' => '412312',
+            'insuranceNum' => '312412',
+            'liabilityNum' => '453243',
             'email' => 'pro@gmail.com',
             'password' => bcrypt('password'),
         ]);
@@ -50,6 +53,9 @@ class UsersTableSeeder extends Seeder
             'state'=>'California',
             'phonenumber'=>'3235607784',
             'role' => '1',
+            'licenseNum' => '676752',
+            'insuranceNum' => '9878987',
+            'liabilityNum' => '787667',
             'email' => 'nagaoadam223@gmail.com',
             'password' => bcrypt('password'),
         ]);

@@ -1,11 +1,13 @@
-@extends('layouts.default')
+@extends('layouts.defaultWithSidebar')
 @section('head')
 <link href="css/home.css" rel="stylesheet">
 
-<style type="text/css">
-     #wrapper {
-           margin-top:9%;
-     }   
+<style type="text/css"> 
+
+   //This is to fix the top margin on the profile page which for some reason is different from the others
+   #wrapper {
+      margin-top:9%;
+   }   
 
 </style>
 

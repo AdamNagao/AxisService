@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
 
             //pro stuff
             $table->string('licenseNum')->default(0);
-            $table->string('insuanceNum')->default(0);
+            $table->string('insuranceNum')->default(0);
             $table->string('liabilityNum')->default(0);
 
             //Cashier stuff

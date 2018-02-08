@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.defaultWithSidebar')
 @section('content')
 
 <div class="container">

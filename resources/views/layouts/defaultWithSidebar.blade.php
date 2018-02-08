@@ -67,6 +67,108 @@
          </div>
        </div>
       </nav>
+    <div class="container-fluid" style="margin-top:5%;">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column" style ="background-color:lightgray;">
+
+              @if(Auth::user()->role==0)
+                {{--This is a user--}}
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/home">
+                    <span data-feather="home"></span>
+                    Home <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/order">
+                    <span data-feather="folder"></span>
+                    Order a new job <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/orders">
+                    <span data-feather="briefcase"></span>
+                    Your Orders <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/profile/{{Auth::user()->id}}">
+                    <span data-feather="user"></span>
+                    Your Profile <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+            
+              @elseif(Auth::user()->role==1)
+                {{--This is a pro user--}}
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/home">
+                    <span data-feather="home"></span>
+                    Home <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/viewJobs">
+                    <span data-feather="folder"></span>
+                    View Jobs <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/orders">
+                    <span data-feather="briefcase"></span>
+                    Your Jobs <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/profile/{{Auth::user()->id}}">
+                    <span data-feather="user"></span>
+                    Your Profile <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+  
+              @elseif(Auth::user()->role==2)
+                {{--this is an admin--}}
+
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/home">
+                    <span data-feather="home"></span>
+                    Home <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/order">
+                    <span data-feather="folder"></span>
+                    Create an Order <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/orders">
+                    <span data-feather="briefcase"></span>
+                    View all Orders <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" href="/AxisService/public/profile/{{Auth::user()->id}}">
+                    <span data-feather="user"></span>
+                    Your Profile <span class="sr-only">(current)</span>
+                  </a>
+                </li> 
+              @endif
+            </ul>
+          </div>
+        </nav>
 
 
       @yield('content')

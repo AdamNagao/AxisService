@@ -47,19 +47,42 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'first' => 'required|string|max:255',
-            'last' => 'required|string|max:255',
-            'address'=>'required|string|max:255',
-            'city'=>'required|string|max:255',
-            'state'=>'required|string|max:255',
-            'phonenumber'=>'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'role' => 'max:3',
-            'rating'=> 'max:5',
-            'numOfRating'=> 'integer',
-        ]);
+        if($data['role']==1){
+
+            return Validator::make($data, [
+                'first' => 'required|string|max:255',
+                'last' => 'required|string|max:255',
+                'address'=>'required|string|max:255',
+                'city'=>'required|string|max:255',
+                'state'=>'required|string|max:255',
+                'phonenumber'=>'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'role' => 'max:3',
+                'rating'=> 'max:5',
+                'numOfRating'=> 'integer',
+                'licenseNum' =>'required',
+                'insuranceNum' =>'required',
+                'liabilityNum' =>'required',
+            ]);
+
+
+        } else {
+            return Validator::make($data, [
+                'first' => 'required|string|max:255',
+                'last' => 'required|string|max:255',
+                'address'=>'required|string|max:255',
+                'city'=>'required|string|max:255',
+                'state'=>'required|string|max:255',
+                'phonenumber'=>'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'role' => 'max:3',
+                'rating'=> 'max:5',
+                'numOfRating'=> 'integer',
+            ]);
+        }
+
     }
 
     /**
@@ -70,16 +93,34 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'first' => $data['first'],
-            'last' => $data['last'],
-            'address' => $data['address'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'phonenumber' => $data['phonenumber'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'role' => $data['role'],
-        ]);
+
+        if($data['role']==1){
+            return User::create([
+                'first' => $data['first'],
+                'last' => $data['last'],
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'phonenumber' => $data['phonenumber'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'role' => $data['role'],
+                'licenseNum' => $data['licenseNum'],
+                'insuranceNum' => $data['insuranceNum'],
+                'liabilityNum' => $data['liabilityNum'],
+            ]);
+        } else {
+            return User::create([
+                'first' => $data['first'],
+                'last' => $data['last'],
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'phonenumber' => $data['phonenumber'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'role' => $data['role'],
+            ]);
+        }
     }
 }
