@@ -1,22 +1,20 @@
 @extends('layouts.default')
 @section('head')
 <link href="css/home.css" rel="stylesheet">
+
+<style type="text/css">
+     #wrapper {
+           margin-top:9%;
+     }   
+
+</style>
+
+</style>
 @endsection
 @section('content')
 <div class="container">
    <div class="row my-2">
       <div class="col-lg-8 order-lg-2">
-         <ul class="nav nav-tabs">
-            <li class="nav-item">
-               <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
-            </li>
-            <li class="nav-item">
-               <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
-            </li>
-            <li class="nav-item">
-               <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-            </li>
-         </ul>
          <div class="tab-content py-4">
             <div class="tab-pane active" id="profile">
                <h2 class="mb-3">{{{$user->first}}},{{{$user->last}}} Profile</h2>

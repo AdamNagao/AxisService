@@ -29,6 +29,11 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            //pro stuff
+            $table->string('licenseNum')->default(0);
+            $table->string('insuanceNum')->default(0);
+            $table->string('liabilityNum')->default(0);
+
             //Cashier stuff
             $table->string('stripe_id')->nullable();
             $table->string('card_brand')->nullable();

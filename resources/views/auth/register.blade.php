@@ -1,4 +1,6 @@
 @extends('layouts.default')
+
+
 @section('content')
 <div class="container">
    <div class="row">
@@ -99,18 +101,30 @@
                   <div class="row">
                      <legend class="col-form-label col-sm-2 pt-0">Role</legend>
                      <div class="col-sm-10">
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" name="role" id="gridRadios1" value="0" checked>
+                        <div>
+                           <input class="form-check-input" onclick="hideorshow();" type="radio" name="role" id="gridRadios1" value="0" checked>
                            <label class="form-check-label" for="gridRadios1">
                            Client
                            </label>
                         </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" name="role" id="gridRadios2" value="1">
+                        <div>
+                           <input class="form-check-input" onclick="hideorshow();" type="radio" name="role" id="gridRadios2" value="1">
                            <label class="form-check-label" for="gridRadios2">
                            Pro
                            </label>
                         </div>
+
+                        <div id="reveal-if-active" style="display: none;">
+                           <label class="form-check-label" for="licenseNum">License Number</label>
+                           <input id="licenseNum" type="text" class="form-control" name="licenseNum">
+
+                           <label class="form-check-label" for="insuranceNum">Insurance Number</label>
+                           <input id="insuranceNum" type="text" class="form-control" name="insuranceNum">
+
+                           <label class="form-check-label" for="liabilityNum">Liability Number</label>
+                           <input id="liabilityNum" type="text" class="form-control" name="liabilityNum">
+                        </div>
+
                      </div>
                   </div>
                   <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -143,4 +157,24 @@
       </div>
    </div>
 </div>
+<script>
+function hideorshow() {
+   if (document.getElementById("gridRadios2").checked) {
+ 
+      document.getElementById("reveal-if-active").style.display = 'block';
+
+   } else if(document.getElementById("gridRadios1").checked) {
+
+      document.getElementById("reveal-if-active").style.display = 'none';
+
+   }  else {
+
+      document.getElementById("reveal-if-active").style.display = 'none';
+   }
+}
+</script>
+@endsection
+
+@section('foot')
+
 @endsection
