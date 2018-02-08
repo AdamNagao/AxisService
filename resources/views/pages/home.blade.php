@@ -1,7 +1,5 @@
 @extends('layouts.defaultWithSidebar')
-@section('head')
-<link href="css/home.css" rel="stylesheet">
-@endsection
+
 @section('content')
 @if(Auth::check())
 <div class="container">

@@ -1,9 +1,35 @@
 @extends('layouts.defaultWithSidebar')
 @section('head')
-<link href="css/home.css" rel="stylesheet">
+<style>
+   .height {
+      min-height: 200px;
+   }
+
+   .icon {
+      font-size: 47px;
+      color: #5CB85C;
+   }
+
+   .iconbig {
+      font-size: 77px;
+      color: #5CB85C;
+   }
+
+   .table > tbody > tr > .emptyrow {
+      border-top: none;
+   }
+
+   .table > thead > tr > .emptyrow {
+      border-bottom: none;
+   }
+
+   .table > tbody > tr > .highrow {
+      border-top: 3px solid;
+   }
+</style>
+
 @endsection
 @section('content')      
-<div class="container">
    @if(Auth::check())
       @if(is_null($orders))
          <p>Whoops! You have no orders, go create an order</p>
@@ -11,8 +37,9 @@
          @if(Auth::user()->role==0)
             <h2>{{{Auth::user()->first}}}'s Orders</h2>
             @foreach($orders as $order)
+            <div class="container">
                   <div class="row">
-                     <div class="col-md-12">
+                     <div class="col-md-8">
                         <div class="card ">
                         <div class="card-header">
                         <h3 class="text-xs-center"><strong>Order summary</strong></h3>
@@ -62,7 +89,7 @@
                                     @php
 
                                     $proIdList = $order->proId;
-                                    $array = explode(',', $proIdList);
+                                    $array = explode(',', $proIdList); //break the list on commas
 
                                     foreach($array as $value) {
 
@@ -90,10 +117,25 @@
                                                 echo "<td><a href='profile/$value' type='button' class='btn btn-primary'>View Profile</a></td>";
 
                                                 $proId = $row['id'];
+                                                $orderId = $order->id;
 
-                                                if($order->active>=3){
-                                                   echo "<td><a href='viewQuote/$order->id/$proId' type='button' class='btn btn-primary'>View Quote</a></td>";
+                                                // Attempt select query execution
+                                                $sql2 = "SELECT * FROM products WHERE proId='$proId' AND orderId='$orderId'";
+
+                                                if($result2 = $mysqli->query($sql2)){
+                                                   if($result2->num_rows > 0){
+                                                      if($order->active>=3){ //check if order has quote by this pro
+                                                   
+                                                         echo "<td><a href='viewQuote/$order->id/$proId' type='button' class='btn btn-primary'>View Quote</a></td>";
+                                                   
+                                                      }
+                                                   }
+                                                } else{
+                                                   echo "No records matching your query were found.";
                                                 }
+                                                //free result set
+                                                $result2->free();
+
                                                 if($order->active==3){
                                                    echo "<td><a href='selectPro/$value/$order->id' type='button' class='btn btn-primary'>Select this Pro</a></td>";
                                                    echo "</tr></tbody>";  
@@ -124,34 +166,7 @@
                </div>
             </div>
          </div>
-         <style>
-   .height {
-      min-height: 200px;
-   }
-
-   .icon {
-      font-size: 47px;
-      color: #5CB85C;
-   }
-
-   .iconbig {
-      font-size: 77px;
-      color: #5CB85C;
-   }
-
-   .table > tbody > tr > .emptyrow {
-      border-top: none;
-   }
-
-   .table > thead > tr > .emptyrow {
-      border-bottom: none;
-   }
-
-   .table > tbody > tr > .highrow {
-      border-top: 3px solid;
-   }
-         </style>
-
+         <br></br>
          @endforeach 
             @elseif(Auth::user()->role==1)
          <!--Pro user jobs-->

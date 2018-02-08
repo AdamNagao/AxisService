@@ -44,7 +44,7 @@ class OrderController extends Controller
         if(Auth::check()){
             if(Auth::user()->role==1) {
                 //pro user is checking available jobs
-                $orders = Order::where('active',1)->get();
+                $orders = Order::where('active','!=','0')->get();
                 return view('pages.viewJobs',compact('orders'));
 
             } 
@@ -254,14 +254,17 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
     public function createStripeCharge($product_id, $product_price, $product_name, $customer)
     {
         try {
+            
             $charge = \Stripe\Charge::create(array(
                 "amount" => $product_price,
                 "currency" => "usd",
                 "customer" => $customer->id,
                 "description" => $product_name
             ));
+
+
         } catch(\Stripe\Error\Card $e) {
-            return redirect()
+            return redirect()   
                 ->route('index')
                 ->with('error', 'Your credit card was been declined. Please try again or contact us.');
     }

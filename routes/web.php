@@ -84,3 +84,4 @@ Route::post('/store', [
     'as' => 'store',
     'middleware' => 'auth'
 ]);
+
