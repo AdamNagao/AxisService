@@ -15,14 +15,28 @@ class ProductController extends Controller
     * @var App\Product $products
     * @return Illuminate\View\View
     */
-    public function index($orderId,$proId)
-    {
+    public function index($orderId,$proId) {
         //need to return products where orderId and proId matches to find that pro's quote
         $products = Product::where([['orderId', '=', $orderId],['proId', '=', $proId],])->get();
 
+       
+        $runningSum = 0;
+        $tax = 0;
+        $fee = 0;
+        $total = 0;
 
+        foreach($products as $product) {
+            $runningSum += $product->price;
+        }
 
-        return view('pages.index', compact('products'));
+        $tax = 0.1 * $runningSum;
+        $fee = 0.2 * $runningSum;
+        $total = $tax + $fee + $runningSum;                   
+                   
+
+        $order = Order::where('id','=',$orderId)->first();
+
+        return view('pages.index', compact('products','order','total','tax','fee','runningSum','proId'));
         
     }
 

@@ -70,24 +70,12 @@
                            @endforeach                                  
                         </tbody>
                      </table>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="col-lg-4 order-lg-1 text-center">
-         <div class="row">
+
             @if(Auth::id() != $user->id)
             <h3>Leave a Review for {{$user->first}},{{$user->last}}</h3>
             <form action='../completeReview/{{$user->id}}' method="POST">
                {{csrf_field()}}
                <div class="form-group">
-                  <label for="tagline">Tagline</label>
-                  <input type="text" name="tagline">
-                  <br><br\>
-                  <label for="description">Service Description</label>
-                  <input type="text" name="description">
-                  <br><br\> 
                   <span class="rating">
                   <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1" value="5">
                   <label for="rating-input-1-5" class="rating-star"></label>
@@ -100,13 +88,24 @@
                   <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1" value="1">
                   <label for="rating-input-1-1" class="rating-star"></label>
                   </span>
+                  <label for="tagline">Tagline</label>
+                  <input type="text" name="tagline">
+                  <br><br\>
+                  <label for="description">Service Description</label>
+                  <input type="text" name="description">
+                  <br><br\> 
                </div>
                <input class="btn btn-primary" type="submit" value="Submit">
                </input>
             </form>
-         </div>
+       
          @endif
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
+
    </div>
 </div>
 @endsection

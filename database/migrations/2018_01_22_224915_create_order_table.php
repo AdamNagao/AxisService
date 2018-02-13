@@ -24,7 +24,8 @@ class CreateOrderTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('phonenumber');
-            $table->boolean('active')->default(true);
+            $table->integer('active')->default(1);
+            $table->decimal('balance')->default(0);
             $table->timestamps();
         });
     }

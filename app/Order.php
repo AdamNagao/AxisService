@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-   protected $fillable=['id','userId','proId','first','last','description','address','city','state','phonenumber','active'];
+   protected $fillable=['id','userId','proId','first','last','description','address','city','state','phonenumber','active','balance'];
 
     public function user()  {
         return $this->hasOne('App\User');

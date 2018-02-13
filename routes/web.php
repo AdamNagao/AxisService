@@ -73,7 +73,7 @@ Route::get('/admin', [
     'middleware' => 'admin'
 ]);
  
-Route::post('/pay/{product}', [
+Route::post('/pay/{product}/{orderId}', [
     'uses' => 'OrderController@postPayWithStripe',
     'as' => 'pay',
     'middleware' => 'auth'

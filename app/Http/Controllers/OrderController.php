@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
 use App\Http\Requests;
-
+use App\Product;
+use Cookie;
 class OrderController extends Controller
 {
     /**
@@ -143,8 +144,22 @@ class OrderController extends Controller
             // The user is logged in...
             $order=Order::where('id',$orderId)->first(); //get the user's order
 
-            $order->update(array_merge($request->all(), ['active' => 4,'proId'=>$proId]));  //4 denotes the job is pending
-            
+            $products = Product::where([['orderId', '=', $orderId],['proId', '=', $proId],])->get(); //get the products from the quote 
+
+            $runningSum = 0;
+            $tax = 0;
+            $fee = 0;
+            $total = 0;
+
+            foreach($products as $product){
+                $runningSum += $product->price;
+            }
+
+            $tax = 0.1 * $runningSum;
+            $fee = 0.2 * $runningSum;
+            $total = $tax + $fee + $runningSum;
+
+            $order->update(array_merge($request->all(), ['active' => 4,'proId'=>$proId,'balance'=>$total]));  //4 denotes the job is has a pro selected and a pending balance
             return redirect()->back();
         }
     }
@@ -209,9 +224,10 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
     * @param App\Product $product
     * @return chargeCustomer()
     */
-    public function postPayWithStripe(Request $request, \App\Product $product)
+    public function postPayWithStripe(Request $request, \App\Product $product,$orderId)
     {
-        return $this->chargeCustomer($product->id, $product->price, $product->name, $request->input('stripeToken'));
+ 
+        return $this->chargeCustomer($product->id, $request->amount, $product->name,$orderId, $request->input('stripeToken'));
     }
  
    /**
@@ -224,7 +240,7 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
     * @param string $token
     * @return createStripeCharge()
     */
-    public function chargeCustomer($product_id, $product_price, $product_name, $token)
+    public function chargeCustomer($product_id, $product_price, $product_name,$orderId, $token)
     {
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         
@@ -237,7 +253,7 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
             $customer = \Stripe\Customer::retrieve(Auth::user()->stripe_id);
         }
  
-        return $this->createStripeCharge($product_id, $product_price, $product_name, $customer);
+        return $this->createStripeCharge($product_id, $product_price, $product_name, $customer,$orderId);
     }
  
    /**
@@ -251,15 +267,15 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
     * @param Stripe\Customer $customer
     * @return postStoreOrder()
     */
-    public function createStripeCharge($product_id, $product_price, $product_name, $customer)
+    public function createStripeCharge($product_id, $payment, $product_name, $customer,$orderId)
     {
         try {
             
             $charge = \Stripe\Charge::create(array(
-                "amount" => $product_price,
+                "amount" => $payment,
                 "currency" => "usd",
                 "customer" => $customer->id,
-                "description" => $product_name
+                "description" => "Order ID : " . $orderId,
             ));
 
 
@@ -269,7 +285,7 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
                 ->with('error', 'Your credit card was been declined. Please try again or contact us.');
     }
  
-        return $this->postStoreOrder($product_name);
+        return $this->postStoreOrder($orderId,$payment);
     }
  
    /**
@@ -310,14 +326,16 @@ postStoreOrder() – finally, we create a new Order redirect the user to the ind
     * @param string $product_name
     * @return redirect()
     */
-    public function postStoreOrder($product_name)
+    public function postStoreOrder($orderId,$payment)
     {
-        /*
-        Order::create([
-            'email' => Auth::user()->email,
-            'product' => $product_name
-        ]);
-        */  
+        //update the order balance and redirect
+        $order=Order::where('id',$orderId)->first();
+
+        $balance = $order->balance;
+        $balance -= $payment;
+
+        $order->update(array_merge(['balance' => $balance]));
+
 
         return redirect()
             ->action('OrderController@index');

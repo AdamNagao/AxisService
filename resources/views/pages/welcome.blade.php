@@ -18,20 +18,16 @@
             <p>All your service needs in one place!</p>
          </div>
          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form>
-               <div class="form-row">
-                  <div class="col-12 col-md-9 mb-2 mb-md-0">
-                     <label class="mr-sm-2" for="inlineFormCustomSelect">Select a service</label>
-                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
-                        <option value="1">AC Repair</option>
-                        <option value="2">Roof Repair</option>
-                        <option value="3">Other</option>
-                     </select>
-                     <a class="btn btn-primary" href="register" role="button">Select</a>
-                  </div>
-               </div>
-            </form>
+            <div class="btn-group btn-group-lg" role="group" aria-label="...">
+               <label for="inlineFormCustomSelect">Select a service</label>
+               <select class="select" id="inlineFormCustomSelect">
+                  <option selected>Choose...</option>
+                  <option value="1">AC Repair</option>
+                  <option value="2">Roof Repair</option>
+                  <option value="3">Other</option>
+               </select>
+               <a class="btn btn-primary btn-lg" href="register" role="button">Select</a>
+            </div>
          </div>
       </div>
    </div>
@@ -140,7 +136,7 @@
                      <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
                   </div>
                   <div class="col-12 col-md-3">
-                     <a class="btn btn-primary" href="register" role="button">Sign up!</a>
+                     <a class="btn btn-primary btn-lg" href="register" role="button">Sign up!</a>
                   </div>
                </div>
             </form>
