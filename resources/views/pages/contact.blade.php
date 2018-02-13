@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 8%">
 	<h2>Contact us</h2>
 	<p>Phone: (818)787-3339</p>
 	<p>Email: axishomeimprovement@gmail.com</p>

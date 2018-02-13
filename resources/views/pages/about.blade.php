@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="margin-top: 8%">
 
       <!-- Introduction Row -->
       <h1 class="my-4">About Us</h1>

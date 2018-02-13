@@ -12,7 +12,7 @@
    </head>
    <body>
 
-    <nav class="navbar navbar-dark bg-dark box-shadow fixed-top">
+    <nav class="navbar navbar-dark bg-dark box-shadow">
          <div class="container">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -65,7 +65,7 @@
     </nav>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:3%">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar" >
           <div class="sidebar">

@@ -4,8 +4,7 @@
 @if(Auth::check())
 <div class="container">
     <div class="row" >
-        <div class="col-xs-3 col-sm-3 col-md-2"></div>
-        <div class="col-xs-6 col-sm-6 col-md-8">
+        <div class="col-xs-7 col-sm-7 col-md-9 offset-md-2">
 
 
             @if(Auth::user()->role==0)
@@ -39,7 +38,6 @@
             @endif
 
         </div>
-      <div class="col-xs-3 col-sm-3 col-md-2"></div>
    </div>
 </div>
 </div>
