@@ -7,10 +7,13 @@
 
 <div class="container text-center" style="margin-top: 8%">
 	<h2>Contact us</h2>
+  <br></br>
 	<p>Phone: (818)787-3339</p>
+  <br>
 	<p>Email: axishomeimprovement@gmail.com</p>
+  <br>
 	<p>Address: 7335 Van Nuys Blvd #106, Van Nuys, CA 91405</p>
-	
+	<br></br>
 	<div class="container text-center">
 		<div class="row">
 		<div class="col">	

@@ -2,16 +2,17 @@
 
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 8%">
    <div class="row">
-      <div class="col-md-8 col-md-offset-4">
+      <div class="col-md-8 offset-md-4">
          <div class="panel panel-default">
-            <div class="panel-heading">Register</div>
+            <h2>Register</h2>
+            <div class="panel-heading"></div>
             <div class="panel-body">
                <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                   {{ csrf_field() }}
                   <div class="form-group{{ $errors->has('first') ? ' has-error' : '' }}">
-                     <label for="first" class="col-md-4 control-label">First</label>
+                     <label for="first" class="col-md-4 control-label">First Name</label>
                      <div class="col-md-6">
                         <input id="first" type="text" class="form-control" name="first" value="{{ old('first') }}" required autofocus>
                         @if ($errors->has('first'))
@@ -23,7 +24,7 @@
                   </div>
 
                   <div class="form-group{{ $errors->has('last') ? ' has-error' : '' }}">
-                     <label for="last" class="col-md-4 control-label">Last</label>
+                     <label for="last" class="col-md-4 control-label">Last Name</label>
                      <div class="col-md-6">
                         <input id="last" type="text" class="form-control" name="last" value="{{ old('last') }}" required autofocus>
                         @if ($errors->has('last'))
@@ -36,7 +37,7 @@
 
 
                   <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                     <label for="address" class="col-md-4 control-label">Address</label>
+                     <label for="address" class="col-md-4 control-label">Home Address</label>
                      <div class="col-md-6">
                         <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
                         @if ($errors->has('address'))
@@ -87,7 +88,7 @@
                   </div>
 
                   <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                     <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                     <label for="email" class="col-md-4 control-label">E-mail Address</label>
                      <div class="col-md-6">
                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                         @if ($errors->has('email'))
