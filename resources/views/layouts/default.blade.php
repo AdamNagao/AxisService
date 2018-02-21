@@ -12,61 +12,57 @@
    </head>
    <body>
     <div id="wrapper">
-      <nav class="navbar navbar-dark bg-dark box-shadow fixed-top">
-        <div class="container">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <a class="navbar-brand" href="public">Axis Service</a>
-         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-               <li class="nav-item dropdown">
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      @if (Auth::guest())
+    <nav class="navbar navbar-dark bg-dark box-shadow fixed-top">
+         <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{{ route('welcome')}}">Axis Service</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+               <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @if (Auth::guest())
                         {{--This is a guest user--}}
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-
-                      @else
-
-                        @if(Auth::user()->role==0)
-                          {{--This is a user--}}
-                          <li><a href="/public/home">Home</a></li>
-                          <li><a href="/public/order">Order a new job</a></li>
-                          <li><a href="/public/orders">Your Orders</a></li>
-                          <li><a href="/public/profile/{{Auth::user()->id}}">Your Profile</a></li>          
-                        @elseif(Auth::user()->role==1)
-                          {{--This is a pro user--}}
-                          <li><a href="/public/home">Home</a></li>
-                          <li><a href="/public/viewJobs">View Jobs</a></li>
-                          <li><a href="/public/orders">Your Jobs</a></li>
-                          <li><a href="profile/{{Auth::user()->id}}">Your Profile</a></li>  
-                        @elseif(Auth::user()->role==2)
-                          {{--this is an admin--}}
-                          <li><a href="/public/home">Home</a></li>
-                          <li><a href="/public/vieworders">Create an Order</a></li>
-                          <li><a href="/public/orders">View all Orders</a></li>
-                          <li><a href="profile/{{Auth::user()->id}}">Your Profile</a></li>  
-                        @endif
-
-                          <li>
-                          <a href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">Logout</a>
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                          </form>
-                          </li>  
-
-                      @endif
-                      <li><a href="contact">Contact</a></li>
-                      <li><a href="about">About</a></li>
+                  <li><a href="{{ route('login') }}">Login</a></li>
+                  <li><a href="{{ route('register') }}">Register</a></li>
+                  @else
+                  @if(Auth::user()->role==0)
+                  {{--This is a user--}}
+                  <li><a href="{{ route('home') }}">Home</a></li>
+                  <li><a href="{{ route('order') }}">Order a new job</a></li>
+                  <li><a href="{{ route('orders') }}">Your Orders</a></li>
+                  <li><a href="{{Auth::user()->id}}">Your Profile</a></li>          
+                  @elseif(Auth::user()->role==1)
+                  {{--This is a pro user--}}
+                  <li><a href="{{ route('home') }}">Home</a></li>
+                  <li><a href="{{ route('viewJobs') }}">View Jobs</a></li>
+                  <li><a href="{{ route('orders') }}">Your Jobs</a></li>
+                  <li><a href="{{Auth::user()->id}}">Your Profile</a></li>  
+                  @elseif(Auth::user()->role==2)
+                  {{--this is an admin--}}
+                  <li><a href="{{ route('home') }}">Home</a></li>
+                  <li><a href="{{ route('order') }}">Create an Order</a></li>
+                  <li><a href="{{ route('orders') }}">View all Orders</a></li>
+                  <li><a href="{{Auth::user()->id}}">Your Profile</a></li>  
+                  @endif
+                  <li>
+                  <a href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                     document.getElementById('logout-form').submit();">Logout</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                  </form>
+                  </li>  
+                  @endif
+                  <li><a href="contact">Contact</a></li>
+                  <li><a href="about">About</a></li>
                   </div>
-               </li>
-            </ul>
+                  </li>
+               </ul>
+            </div>
          </div>
-       </div>
-      </nav>
+    </nav>
 
 
       @yield('content')

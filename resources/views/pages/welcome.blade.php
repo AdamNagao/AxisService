@@ -15,18 +15,12 @@
       <div class="row">
          <div class="col-xl-9 mx-auto">
             <h1 class="mb-5">Axis Service</h1>
-            <p>All your service needs in one place!</p>
+            <p>Looking to get some work done? Or want to do some work?</p>
          </div>
          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <div class="btn-group btn-group-lg" role="group" aria-label="...">
-               <label for="inlineFormCustomSelect">Select a service</label>
-               <select class="select" id="inlineFormCustomSelect">
-                  <option selected>Choose...</option>
-                  <option value="1">AC Repair</option>
-                  <option value="2">Roof Repair</option>
-                  <option value="3">Other</option>
-               </select>
-               <a class="btn btn-primary btn-lg" href="register" role="button">Select</a>
+               <a class="btn btn-primary btn-lg" href="register" role="button">Become a Client</a>
+               <a class="btn btn-primary btn-lg" href="register" role="button">Become a Pro</a>
             </div>
          </div>
       </div>

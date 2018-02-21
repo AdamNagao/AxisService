@@ -21,12 +21,12 @@
    display: block;
    width: 24px;
    height: 24px;
-   background: url('../img/empty_star.png') 0 0px;
+   background: url('img/empty_star.png') 0 0px;
    }
    .rating:hover .rating-star:hover,
    .rating:hover .rating-star:hover ~ .rating-star,
    .rating-input:checked ~ .rating-star {
-   background: url('../img/star.png') 0 0px;
+   background: url('img/star.png') 0 0px;
    }
 </style>
 @endsection
@@ -73,7 +73,7 @@
 
             @if(Auth::id() != $user->id)
             <h3>Leave a Review for {{$user->first}},{{$user->last}}</h3>
-            <form action='../completeReview/{{$user->id}}' method="POST">
+            <form action='completeReview/{{$user->id}}' method="POST">
                {{csrf_field()}}
                <div class="form-group">
                   <span class="rating">

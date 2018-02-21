@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('pages.welcome');
-});
+})->name('welcome');
 Route::get('/public', function () {
     return view('pages.welcome');
 });
@@ -29,17 +29,17 @@ Route::get('/dashboard', function () {
 });
 Route::get('/order', function () {
     return view('pages.order');
-});
+})->name('order');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/orders','OrderController@index');   //list out orders
+Route::get('/orders','OrderController@index')->name('orders');   //list out orders
 
-Route::post('/createorder','OrderController@store'); //make an order
+Route::post('/createorder','OrderController@store')->name('createOrder'); //make an order
 
-Route::get('/viewJobs','OrderController@viewJobs');
+Route::get('/viewJobs','OrderController@viewJobs')->name('viewJobs');
 
 Route::put('/acceptJob/{id}','OrderController@update'); //pro has accepted a job
 
@@ -47,7 +47,7 @@ Route::get('/selectPro/{proId}/{orderId}','OrderController@selectPro'); //the us
 
 Route::get('/completeJob/{id}','OrderController@completeJob'); //pro has completed a job
 
-Route::get('/profile/{id}','ReviewsController@indexProfile'); //view the user with ID profile
+Route::get('/{id}','ReviewsController@indexProfile')->name('profile'); //view the user with ID profile
 
 Route::post('/completeReview/{id}', 'ReviewsController@store'); //add a review to the database
 

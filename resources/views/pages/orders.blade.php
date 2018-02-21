@@ -96,7 +96,7 @@
                                        /* Attempt MySQL server connection. Assuming you are running MySQL
                                        server with default setting (user 'root' with no password) */
 
-                                       $mysqli = new mysqli("localhost", "root", "", "axis");
+                                       $mysqli = new mysqli(env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_DATABASE'));
  
                                        // Check connection
                                        if($mysqli === false){
@@ -114,7 +114,7 @@
                                                 echo "<td>" . $row['first'] . " " . $row['last'] . "</td>";
                                                 echo "<td>" . $row['rating'] . " with " . $row['numOfRating'] . " reviews"; 
 
-                                                echo "<td><a href='profile/$value' type='button' class='btn btn-primary'>View Profile</a></td>";
+                                                echo "<td><a href='$value' type='button' class='btn btn-primary'>View Profile</a></td>";
 
                                                 $proId = $row['id'];
                                                 $orderId = $order->id;
