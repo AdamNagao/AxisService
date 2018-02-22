@@ -24,13 +24,36 @@
                <p>Phone Number: {{$order->phonenumber}}</p>
                <p>Active: {{$order->active}}</p>
             </div>
-            <div class="card-block">
-               <form action='acceptJob/{{$order->id}}' method="POST">
-                  {{csrf_field()}}
-                  {{method_field('PUT')}}
-                  <input class="btn btn-primary" type="submit" value="Accept Job"></input>
-               </form>
-            </div>
+               @php
+                  $proId = Auth::user()->id; //the current pro
+                  $proIdList = $order->proId; //the list of signed up pros
+                  $array = explode(',', $proIdList); //break the list on commas
+                  $proIsSignedUp = false;
+
+                  foreach($array as $value) { //traverse the array to check if the pro has already signed up
+                     if($value == $proId){
+                        $proIsSignedUp = true;
+                     }
+                  }  
+                  
+                  if($proIsSignedUp){
+
+                  } else {
+                     echo "<div class='card-block'>";
+                     echo "<form action='acceptJob/$order->id' method='POST'>";
+
+
+                  @endphp
+
+                  {{ csrf_field() }}
+                  {{ method_field('PUT') }}
+                  
+                  @php                   
+                     echo "<input class='btn btn-primary' type='submit' value='Accept Job'></input>";   
+                     echo "</form>";
+                     echo "</div>";
+                  }               
+               @endphp
          </div>
       </div>
    </div>

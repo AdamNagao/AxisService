@@ -118,7 +118,7 @@ class OrderController extends Controller
 
         $order=Order::where('id',$id)->first();
 
-        if(!empty($order->proId)){
+        if(!empty($order->proId)){  //create a running list of the pro's who have signed up
             $proIdList = $order->proId . "," . $proId;
         } else {
             $proIdList = $proId;
