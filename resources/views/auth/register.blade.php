@@ -6,7 +6,7 @@
    <div class="row">
       <div class="col-md-8 offset-md-4">
          <div class="panel panel-default">
-            <h2>Register</h2>
+            <h2>Register as a Client</h2>
             <div class="panel-heading"></div>
             <div class="panel-body">
                <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -108,23 +108,6 @@
                            Client
                            </label>
                         </div>
-                        <div>
-                           <input class="form-check-input" onclick="hideorshow();" type="radio" name="role" id="gridRadios2" value="1">
-                           <label class="form-check-label" for="gridRadios2">
-                           Pro
-                           </label>
-                        </div>
-
-                        <div id="reveal-if-active" style="display: none;">
-                           <label class="form-check-label" for="licenseNum">License Number</label>
-                           <input id="licenseNum" type="text" class="form-control" name="licenseNum">
-
-                           <label class="form-check-label" for="insuranceNum">Insurance Number</label>
-                           <input id="insuranceNum" type="text" class="form-control" name="insuranceNum">
-
-                           <label class="form-check-label" for="liabilityNum">Liability Number</label>
-                           <input id="liabilityNum" type="text" class="form-control" name="liabilityNum">
-                        </div>
 
                      </div>
                   </div>
@@ -158,22 +141,7 @@
       </div>
    </div>
 </div>
-<script>
-function hideorshow() {
-   if (document.getElementById("gridRadios2").checked) {
- 
-      document.getElementById("reveal-if-active").style.display = 'block';
 
-   } else if(document.getElementById("gridRadios1").checked) {
-
-      document.getElementById("reveal-if-active").style.display = 'none';
-
-   }  else {
-
-      document.getElementById("reveal-if-active").style.display = 'none';
-   }
-}
-</script>
 @endsection
 
 @section('foot')

@@ -20,7 +20,7 @@
          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <div class="btn-group btn-group-lg" role="group" aria-label="...">
                <a class="btn btn-primary btn-lg" href="register" role="button">Become a Client</a>
-               <a class="btn btn-primary btn-lg" href="register" role="button">Become a Pro</a>
+               <a class="btn btn-primary btn-lg" href="registerPro" role="button">Become a Pro</a>
             </div>
          </div>
       </div>

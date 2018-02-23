@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('/public', function () {
     return view('pages.welcome');
 });
+Route::get('/registerPro', function () {
+    return view('auth.registerPro');
+});
 Route::get('/contact', function () {
     return view('pages.contact');
 });
