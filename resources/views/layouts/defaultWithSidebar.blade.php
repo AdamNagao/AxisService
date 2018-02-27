@@ -73,19 +73,19 @@
               @if(Auth::user()->role==0)
                 {{--This is a user--}}
                 <li class="nav-item">
-                  <a class="nav-link active" href="home">
+                  <a class="nav-link active" href="{{ route('home') }}">
                   <span data-feather="home"></span>
                   Home <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="order">
+                    <a class="nav-link active" href="{{ route('order') }}">
                     <span data-feather="folder"></span>
                     Order a new job <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="orders">
+                    <a class="nav-link active" href="{{ route('orders') }}">
                     <span data-feather="briefcase"></span>
                     Your Orders <span class="sr-only">(current)</span>
                     </a>
@@ -99,19 +99,19 @@
               @elseif(Auth::user()->role==1)
                 {{--This is a pro user--}}
                 <li class="nav-item">
-                  <a class="nav-link active" href="home">
+                  <a class="nav-link active" href="{{ route('home') }}">
                   <span data-feather="home"></span>
                   Home <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="viewJobs">
+                  <a class="nav-link active" href="{{ route('viewJobs') }}">
                     <span data-feather="folder"></span>
                     View Jobs <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="orders">
+                  <a class="nav-link active" href="{{ route('orders') }}">
                     <span data-feather="briefcase"></span>
                     Your Jobs <span class="sr-only">(current)</span>
                   </a>
@@ -125,19 +125,19 @@
               @elseif(Auth::user()->role==2)
                   {{--this is an admin--}}
                   <li class="nav-item">
-                     <a class="nav-link active" href="home">
+                     <a class="nav-link active" href="{{ route('home') }}">
                      <span data-feather="home"></span>
                      Home <span class="sr-only">(current)</span>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="order">
+                     <a class="nav-link active" href="{{ route('order') }}">
                      <span data-feather="folder"></span>
                      Create an Order <span class="sr-only">(current)</span>
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="orders">
+                     <a class="nav-link active" href="{{ route('orders') }}">
                      <span data-feather="briefcase"></span>
                      View all Orders <span class="sr-only">(current)</span>
                      </a>

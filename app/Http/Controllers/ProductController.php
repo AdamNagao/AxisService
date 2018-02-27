@@ -61,22 +61,56 @@ class ProductController extends Controller
         *[5] => Price 2
         * Etc etc
         */
- 
-        $field_values_array = $_REQUEST['addmore'];
-        $length = count($field_values_array);
-        $id = Auth::id();
-        for($i = 0; $i < $length; $i+=3){
-            $product = $field_values_array[$i];
-            $description = $field_values_array[$i+1];
-            $price = $field_values_array[$i+2] * 100;
-            Product::create(['orderId'=>$orderId,'proId'=>$id, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
+        $products = Product::where('orderId',$orderId)->first();
 
+        if(is_null($products)){
+            //this is the first quote for the order
+            $field_values_array = $_REQUEST['addmore'];
+            $length = count($field_values_array);
+            $id = Auth::id();
+            for($i = 0; $i < $length; $i+=3){
+                $product = $field_values_array[$i];
+                $description = $field_values_array[$i+1];
+                $price = $field_values_array[$i+2] * 100;
+                Product::create(['orderId'=>$orderId,'proId'=>$id, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
+
+            }
+
+            $order=Order::where('id',$orderId)->first(); //get the user's order
+
+            $order->update(array_merge($request->all(), ['active' => 3]));  //3 denotes the job is quoted
+            
+            return redirect("/home");
+        } else {
+            //the order has already been quoted before so delete the previous quote
+            Product::where('orderId',$orderId)->delete();
+
+            //this is the first quote for the order
+            $field_values_array = $_REQUEST['addmore'];
+            $length = count($field_values_array);
+            $id = Auth::id();
+            for($i = 0; $i < $length; $i+=3){
+                $product = $field_values_array[$i];
+                $description = $field_values_array[$i+1];
+                $price = $field_values_array[$i+2] * 100;
+                Product::create(['orderId'=>$orderId,'proId'=>$id, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
+
+            }
+
+            $order=Order::where('id',$orderId)->first(); //get the user's order
+
+            $order->update(array_merge($request->all(), ['active' => 3]));  //3 denotes the job is quoted
+            
+            return redirect("/home");
         }
 
-        $order=Order::where('id',$orderId)->first(); //get the user's order
+    }
 
-        $order->update(array_merge($request->all(), ['active' => 3]));  //3 denotes the job is quoted
-            
-        return redirect("/home");
+
+    public function editQuote($orderId){
+
+        $products = Product::where('orderId','=',$orderId)->get();
+
+        return view('pages.editQuote', compact('products','orderId'));
     }
 }

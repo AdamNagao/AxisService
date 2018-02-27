@@ -3,62 +3,43 @@
 @section('content')
   <div class="container">
     <div class="row" >
-      <div class="col-md-6 offset-md-2">
+      <div class="col offset-md-2">
         <h1>Create a Order</h1>
         <br></br>
         <div class="row">
           <div class="col">
+            <form action='createorder' method="POST">
+            {{csrf_field()}}
+            <div class="form-group"> 
             <label for="first">First name</label>
+            <input type="text" name="first">
             <br></br>
 
             <label for="last">Last name</label>
+            <input type="text" name="last">
             <br></br>
 
             <label for="description">Service Description</label>
+            <input type="text" name="description">
             <br></br>
 
             <label for="address">Street Address</label>
+            <input type="text" name="address">
             <br></br>
 
             <label for="city">City</label>
+            <input type="text" name="city">
             <br></br>
 
             <label for="state">State</label>
+            <input type="text" name="state">
             <br></br>
 
             <label for="phonenumber">Phone Number</label>
+            <input type="text" name="phonenumber">
             <br></br>
 
           </div>
-
-          <div class="col">
-
-          <form action='createorder' method="POST">
-            {{csrf_field()}}
-            <div class="form-group"> 
-
-              <input type="text" name="first">
-              <br></br>
-
-
-              <input type="text" name="last">
-              <br></br>
-
-              <input type="text" name="description">
-              <br></br>
-
-              <input type="text" name="address">
-              <br></br>
-
-              <input type="text" name="city">
-              <br></br>
-
-              <input type="text" name="state">
-              <br></br>
-
-              <input type="text" name="phonenumber">
-
-            </div>
             <input class="btn btn-primary btn-lg" type="submit" value="Submit"></input>
           </form>
           </div>

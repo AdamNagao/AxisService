@@ -61,6 +61,8 @@ Route::get('/quote/{orderId}', function ($orderId) { //create a new product/serv
 
 Route::post('/createQuote/{orderId}','ProductController@create');
 
+Route::get('/editQuote/{orderId}','ProductController@editQuote'); //the pro wants to edit the quote
+
 //Route::get('/viewQuote/{orderId}','ProductController@index');    //view the quote
 
 // Product Routes

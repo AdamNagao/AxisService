@@ -212,7 +212,15 @@
                            </table>
                         </div>
                      </div>
-                     <a class="btn btn-primary" role="button" href="quote/{{$order->id}}">Generate Quote</a>
+                     
+                        @if($order->active == 2)
+                           
+                          <a class="btn btn-primary" role="button" href="quote/{{$order->id}}">Generate Quote</a>
+                        @elseif($order->active == 3)
+                     
+                           <a class='btn btn-primary' role='button' href='editQuote/{{$order->id}}'>Edit Quote</a>
+                        @endif
+
                      <a class="btn btn-primary" role="button" href="completeJob/{{$order->id}}">Mark Completed</a>
                
                   </div>
