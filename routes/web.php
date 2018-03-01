@@ -59,9 +59,11 @@ Route::get('/quote/{orderId}', function ($orderId) { //create a new product/serv
     return view('pages.quote', compact('orderId'));
 });
 
-Route::post('/createQuote/{orderId}','ProductController@create');
+Route::post('/createQuote/{orderId}','ProductController@create')->name('createQuote');
 
 Route::get('/editQuote/{orderId}','ProductController@editQuote'); //the pro wants to edit the quote
+
+Route::get('/editQuoteAdmin/{orderId}/{proId}','ProductController@editQuoteAdmin'); //the Admin wants to edit the quote
 
 //Route::get('/viewQuote/{orderId}','ProductController@index');    //view the quote
 

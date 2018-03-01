@@ -61,7 +61,13 @@ class ProductController extends Controller
         *[5] => Price 2
         * Etc etc
         */
-        $proId = Auth::id(); //the proId
+        $proId = -1;
+
+        if(is_null($request->proId)){
+            $proId = Auth::id(); //the proId
+        } else {
+            $proId = $request->proId;
+        }
         $products = Product::where('orderId',$orderId)->where('proId',$proId)->get(); //need to check orderId and proId to see if this order has previously been quoted
 
         if(is_null($products)){
@@ -110,6 +116,16 @@ class ProductController extends Controller
         $proId = Auth::id();
         $products = Product::where('orderId',$orderId)->where('proId',$proId)->get();
 
-        return view('pages.editQuote', compact('products','orderId'));
+        return view('pages.editQuote', compact('products','orderId','proId'));
+    }
+
+    public function editQuoteAdmin($orderId,$proId){
+        if(Auth::check()){
+            if(Auth::user()->role == 2){
+                $products = Product::where('orderId',$orderId)->where('proId',$proId)->get();
+
+                return view('pages.editQuote', compact('products','orderId','proId'));
+            }
+        }
     }
 }

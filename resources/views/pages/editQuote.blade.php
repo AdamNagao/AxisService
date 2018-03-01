@@ -22,9 +22,16 @@
           <div class="panel-heading">Add Products Descriptions and Prices</div>
           <div class="panel-body">
 
-          <form class="form-inline" action="../createQuote/{{$orderId}}" method="POST">
+          <form class="form-inline" action="{{route('createQuote', ['orderId' => $orderId] )}}" method="POST">
             {{csrf_field()}}
 
+            @php
+
+              if(Auth::user()->role == 2){
+                echo "<input type='hidden' name='proId' value='$proId'>";
+              } 
+              
+            @endphp
 
             @foreach($products as $product)
 
