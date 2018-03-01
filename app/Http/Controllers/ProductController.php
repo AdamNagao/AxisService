@@ -61,18 +61,18 @@ class ProductController extends Controller
         *[5] => Price 2
         * Etc etc
         */
-        $products = Product::where('orderId',$orderId)->first();
+        $proId = Auth::id(); //the proId
+        $products = Product::where('orderId',$orderId)->where('proId',$proId)->get(); //need to check orderId and proId to see if this order has previously been quoted
 
         if(is_null($products)){
-            //this is the first quote for the order
+            //this is the first quote for the order for this pro
             $field_values_array = $_REQUEST['addmore'];
             $length = count($field_values_array);
-            $id = Auth::id();
             for($i = 0; $i < $length; $i+=3){
                 $product = $field_values_array[$i];
                 $description = $field_values_array[$i+1];
                 $price = $field_values_array[$i+2] * 100;
-                Product::create(['orderId'=>$orderId,'proId'=>$id, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
+                Product::create(['orderId'=>$orderId,'proId'=>$proId, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
 
             }
 
@@ -83,17 +83,16 @@ class ProductController extends Controller
             return redirect("/home");
         } else {
             //the order has already been quoted before so delete the previous quote
-            Product::where('orderId',$orderId)->delete();
+            Product::where('orderId',$orderId)->where('proId',$proId)->delete();
 
             //this is the first quote for the order
             $field_values_array = $_REQUEST['addmore'];
             $length = count($field_values_array);
-            $id = Auth::id();
             for($i = 0; $i < $length; $i+=3){
                 $product = $field_values_array[$i];
                 $description = $field_values_array[$i+1];
                 $price = $field_values_array[$i+2] * 100;
-                Product::create(['orderId'=>$orderId,'proId'=>$id, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
+                Product::create(['orderId'=>$orderId,'proId'=>$proId, 'name'=>$product, 'description' =>$description, 'price'=>$price]); 
 
             }
 
@@ -108,8 +107,8 @@ class ProductController extends Controller
 
 
     public function editQuote($orderId){
-
-        $products = Product::where('orderId','=',$orderId)->get();
+        $proId = Auth::id();
+        $products = Product::where('orderId',$orderId)->where('proId',$proId)->get();
 
         return view('pages.editQuote', compact('products','orderId'));
     }

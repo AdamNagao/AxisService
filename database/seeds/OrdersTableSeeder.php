@@ -14,8 +14,8 @@ class OrdersTableSeeder extends Seeder
         DB::table('orders')->insert([
             'id' => "1",
             'userId'=>"1",
-            'first' => 'John',
-            'last' => 'Doe',
+            'first' => 'User',
+            'last' => 'Smith',
             'description' => 'Help my AC is not turning on!!!',
             'address' => '1234 Main Street',
             'city' => 'Northridge',
@@ -25,8 +25,8 @@ class OrdersTableSeeder extends Seeder
         DB::table('orders')->insert([
             'id' => "2",
             'userId'=>"2",  
-            'first' => 'Bob',
-            'last' => 'Smith',
+            'first' => 'Pro',
+            'last' => 'Bob',
             'description' => 'My House needs new roofing',
             'address' => '2452 Beacon Street',
             'city' => 'Glendale',
@@ -36,8 +36,8 @@ class OrdersTableSeeder extends Seeder
         DB::table('orders')->insert([
             'id' => "3",
             'userId'=>"3",
-            'first' => 'Jill',
-            'last' => 'Bill',
+            'first' => 'Adam',
+            'last' => 'Nagao',
             'description' => 'I need a new shower!',
             'address' => '1692 Hunginton Street',
             'city' => 'Pasadena',

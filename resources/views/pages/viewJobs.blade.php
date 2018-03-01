@@ -15,15 +15,7 @@
                @else($order->active==1)
                <p>Progress: Pending</p>
                @endif
-               <br>
-               <strong>{{$order->first}}, {{$order->last}}:</strong><br>
-               <p>Description: {{$order->description}}</p>
-               <p>Street Address: {{$order->address}}</p>
-               <p>City: {{$order->city}}</p>
-               <p>State: {{$order->state}}</p>
-               <p>Phone Number: {{$order->phonenumber}}</p>
-               <p>Active: {{$order->active}}</p>
-            </div>
+
                @php
                   $proId = Auth::user()->id; //the current pro
                   $proIdList = $order->proId; //the list of signed up pros
@@ -49,11 +41,28 @@
                   {{ method_field('PUT') }}
                   
                   @php                   
-                     echo "<input class='btn btn-primary' type='submit' value='Accept Job'></input>";   
+                     echo "<input class='btn btn-primary' type='submit' value='Accept Job'></input>";
+                     echo "<a class ='btn btn-primary' href='$order->userId'>View Profile</a>";
                      echo "</form>";
                      echo "</div>";
                   }               
                @endphp
+
+               <br>
+               <strong>{{$order->first}}, {{$order->last}}:</strong><br>
+               <p>Description: {{$order->description}}</p>
+               <p>Street Address: {{$order->address}}</p>
+               <p>City: {{$order->city}}</p>
+               <p>State: {{$order->state}}</p>
+               <p>Phone Number: {{$order->phonenumber}}</p>
+               @if($order->active == 1)
+                  <p>Status: Waiting for Pro's</p>
+               @elseif($order->active ==2)
+                  <p>Status: Accepted by Pro(s)</p>
+               @elseif($order->active == 3)
+                  <p>Status: Quoted by Pro(s)</p>
+               @endif
+            </div>
          </div>
       </div>
    </div>

@@ -168,7 +168,7 @@
          </div>
          <br></br>
          @endforeach 
-            @elseif(Auth::user()->role==1)
+            @elseif(Auth::user()->role==1 or Auth::user()->role==2)
          <!--Pro user jobs-->
             <div class="container">
 
