@@ -124,7 +124,12 @@ class OrderController extends Controller
             $proIdList = $proId;
         }
 
-        $order->update(array_merge($request->all(), ['proId' => $proIdList,'active'=>2]));
+        if($order->active != 3) {
+            $order->update(array_merge($request->all(), ['proId' => $proIdList,'active'=>2]));
+        } else {
+            //order has been quoted already
+            $order->update(array_merge($request->all(), ['proId' => $proIdList]));
+        }
 
         return redirect("/home");
 

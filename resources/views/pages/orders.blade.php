@@ -213,16 +213,54 @@
                         </div>
                      </div>
                      
-                        @if($order->active == 2)
-                           
-                          <a class="btn btn-primary" role="button" href="quote/{{$order->id}}">Generate Quote</a>
-                        @elseif($order->active == 3)
-                     
-                           <a class='btn btn-primary' role='button' href='editQuote/{{$order->id}}'>Edit Quote</a>
-                        @endif
+                     @if($order->active>=1)
+                        @if($order->proId!="")
+                           @php
+                              $proId = Auth::user()->id;
+                              $orderId = $order->id;
 
-                     <a class="btn btn-primary" role="button" href="completeJob/{{$order->id}}">Mark Completed</a>
-               
+                              $isQuotedByMe = 0;
+
+                              $mysqli = new mysqli(env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_DATABASE'));
+ 
+                              // Check connection
+                              if($mysqli === false){
+                                 die("ERROR: Could not connect. " . $mysqli->connect_error);
+                              }
+ 
+                              // Attempt select query execution
+                              $sql = "SELECT * FROM products WHERE proId='$proId' AND orderId='$orderId'";
+
+                              if($result = $mysqli->query($sql)){
+
+                                 if($result->num_rows > 0){
+
+                                    $isQuotedByMe = 1;                                   
+                                    
+                                 }
+
+                                 // Free result set
+                                 $result->free();
+                              } else{
+
+                                 echo "No records matching your query were found.";
+                              }
+
+ 
+                              // Close connection
+                              $mysqli->close();
+
+                              if($isQuotedByMe){
+                                 echo "<a class='btn btn-primary' role='button' href='editQuote/$order->id'>Edit Quote</a>";
+                                 echo "<a class='btn btn-primary' role='button' href='completeJob/$order->id'>Mark Completed</a>";
+                              } else {
+                                 echo "<a class='btn btn-primary' role='button' href='quote/$order->id'>Generate Quote</a>";
+                              }
+
+                           @endphp
+                        @endif
+                     @endif
+
                   </div>
                </div>
             </div>
