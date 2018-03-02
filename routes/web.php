@@ -65,11 +65,12 @@ Route::get('/editQuote/{orderId}','ProductController@editQuote'); //the pro want
 
 Route::get('/editQuoteAdmin/{orderId}/{proId}','ProductController@editQuoteAdmin'); //the Admin wants to edit the quote
 
-//Route::get('/viewQuote/{orderId}','ProductController@index');    //view the quote
+//Media Routes
+Route::post('/uploadPhoto','MediaController@store')->name('uploadPhoto');
+Route::post('/uploadGallery','MediaController@storeGallery')->name('uploadGallery');
+
 
 // Product Routes
-
-
 Route::get('/viewQuote/{orderId}/{proId}', [ 
     'uses' => 'ProductController@index',
     'as' => 'index',
