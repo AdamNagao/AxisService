@@ -12,11 +12,11 @@
             {{csrf_field()}}
             <div class="form-group"> 
             <label for="first">First name</label>
-            <input type="text" name="first">
-            <br></br>
+            <input type="text" name="first" value="{{Auth::user()->first}}">
+
 
             <label for="last">Last name</label>
-            <input type="text" name="last">
+            <input type="text" name="last" value="{{Auth::user()->last}}">
             <br></br>
 
             <label for="description">Service Description</label>
@@ -24,19 +24,19 @@
             <br></br>
 
             <label for="address">Street Address</label>
-            <input type="text" name="address">
+            <input type="text" name="address" value="{{Auth::user()->address}}">
             <br></br>
 
             <label for="city">City</label>
-            <input type="text" name="city">
+            <input type="text" name="city" value="{{Auth::user()->city}}">
             <br></br>
 
             <label for="state">State</label>
-            <input type="text" name="state">
+            <input type="text" name="state" value="{{Auth::user()->state}}">
             <br></br>
 
             <label for="phonenumber">Phone Number</label>
-            <input type="text" name="phonenumber">
+            <input type="text" name="phonenumber" value="{{Auth::user()->phonenumber}}">
             <br></br>
 
           </div>

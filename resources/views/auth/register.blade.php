@@ -4,7 +4,13 @@
 @section('content')
 <div class="container" style="margin-top: 8%">
    <div class="row">
-      <div class="col-md-8 offset-md-4">
+      <div class="col-md-4">
+         <h3>Terms and Conditions</h3>
+         <p>As a Axis Service user, you are guaranteed 100% satisfaction and warranties on all parts and services only if transactions are completed by this application</p>
+         <br>
+         <p>Customers who do not complete transactions through this application are void of all waranties and satisfaction agreements</p>
+      </div>
+      <div class="col-md-8 ">
          <div class="panel panel-default">
             <h2>Register as a Client</h2>
             <div class="panel-heading"></div>

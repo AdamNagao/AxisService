@@ -47,7 +47,7 @@
                      <div class="col-md-4">
                         <div class="thumbnail">
                            <a href="<?php echo asset('storage/' . $user->id . '/gallery/' . '1.png')?>" target="_blank">
-                              <img src="<?php echo asset('storage/' . $user->id . '/gallery/' . '1.png')?>" alt="Lights" style="width:100%">
+                              <img src="<?php echo asset('storage/' . $user->id . '/gallery/' . '1.png')?>" alt="gallery1" style="width:100%">
 
                            </a>
                         </div>
@@ -55,7 +55,7 @@
                      <div class="col-md-4">
                         <div class="thumbnail">
                            <a href="<?php echo asset('storage/' . $user->id . '/gallery/' . '2.png')?>"  target="_blank">
-                              <img src="<?php echo asset('storage/' . $user->id . '/gallery/' . '2.png')?>" alt="Nature" style="width:100%">
+                              <img src="<?php echo asset('storage/' . $user->id . '/gallery/' . '2.png')?>" alt="gallery2" style="width:100%">
 
                            </a>
                         </div>
@@ -63,7 +63,8 @@
                      <div class="col-md-4">
                         <div class="thumbnail">
                            <a href="<?php echo asset('storage/' . $user->id . '/gallery/' . '3.png')?>" target="_blank">
-                              <img src="<?php echo asset('storage/' . $user->id . '/gallery/' . '3.png')?>" alt="Fjords" style="width:100%">
+                              <img src="<?php echo asset('storage/' . $user->id . '/gallery/' . '3.png')?>" alt="gallery3
+                              " style="width:100%">
 
                            </a>
                         </div>

@@ -41,7 +41,7 @@ class MediaController extends Controller
         }else{
             $file = $request->file('avatar')->storeAs('/public/' . $request->user()->id,$request->user()->id . '.png');  
         }
-       
+       return back();
     }
 
     /**
@@ -63,7 +63,7 @@ class MediaController extends Controller
                 $file = $request->file('avatar' . $temp)->storeAs('/public/' . $request->user()->id . '/' . '/gallery/',$temp . '.png');  
             }
         }
-       
+       return back();
     }
 
     /**

@@ -4,7 +4,13 @@
 @section('content')
 <div class="container" style="margin-top: 8%">
    <div class="row">
-      <div class="col-md-8 offset-md-4">
+      <div class="col-md-4">
+         <h3>Terms and Conditions</h3>
+         <p>As a Axis Service pro, a 20% fee will be taken from your paid invoices, and you will recieve payment after two weeks of processing time.</p>
+         <br>
+         <p>If the job is not 100% completed, then payment will not be received</p>
+      </div>
+      <div class="col-md-8">
          <div class="panel panel-default">
             <h2>Register as a Pro</h2>
             <div class="panel-heading"></div>
