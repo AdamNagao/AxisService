@@ -190,7 +190,7 @@
 
                                  // Open Checkout with further options:
                                  handler.open({
-                                 name: 'Demo Site',
+                                 name: 'Axis Service',
                                  description: '2 widgets',
                                  amount: amt
                                  });

@@ -6,9 +6,9 @@
    <div class="row">
       <div class="col-md-4">
          <h3>Terms and Conditions</h3>
-         <p>As a Axis Service pro, a 20% fee will be taken from your paid invoices, and you will recieve payment after two weeks of processing time.</p>
-         <br>
-         <p>If the job is not 100% completed, then payment will not be received</p>
+         <p>A- Service provider agrees to be screened in order to join Axis</p>
+         <p>B- Service provider agrees to do the job in accordance with home owner’s 100% satisfaction or waiver his contracted pay and the job so that we can give it to someone else to finish it </p>
+         <p>C- Service provider agrees to get paid his/hers full amount less 20%  fee for Axis 2 weeks after the job is completed and home owner has sent in his release form</p>
       </div>
       <div class="col-md-8">
          <div class="panel panel-default">

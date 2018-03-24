@@ -11,6 +11,7 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         DB::table('orders')->insert([
             'id' => "1",
             'userId'=>"1",
@@ -44,5 +45,6 @@ class OrdersTableSeeder extends Seeder
             'state' => 'CA',
             'phonenumber'=> '8182238455',
         ]);
+        */
     }
 }

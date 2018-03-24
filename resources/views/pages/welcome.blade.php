@@ -13,7 +13,11 @@
       <div class="row">
          <div class="col-xl-9 mx-auto">
             <h1 class="mb-5">Axis Service</h1>
-            <p>Looking to get some work done? Or want to do some work?</p>
+            <h3>Contact Eddy at (818)-635-8715<h3>
+            <h3>Contact George at (818)787-3339</h3>
+            <br>
+            <h4>Looking to get some work done? Or want to do some work?</h4>
+            <br></br>
          </div>
          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <div class="btn-group btn-group-lg" role="group" aria-label="...">

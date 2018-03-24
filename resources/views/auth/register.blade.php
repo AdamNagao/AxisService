@@ -6,7 +6,7 @@
    <div class="row">
       <div class="col-md-4">
          <h3>Terms and Conditions</h3>
-         <p>As a Axis Service user, you are guaranteed 100% satisfaction and warranties on all parts and services only if transactions are completed by this application</p>
+         <p>7- Home owner or any other service requester customer understands that in order to save their 100% guaranty or any product warranties they have to sign a panda document with us and let us know who they hired and disclose the amount of the contract in another word they have to pay Axis.</p>
          <br>
          <p>Customers who do not complete transactions through this application are void of all waranties and satisfaction agreements</p>
       </div>

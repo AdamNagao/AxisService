@@ -11,6 +11,7 @@ class ReviewsTableSeeder extends Seeder
      */
     public function run()
     {
+        /*
         DB::table('reviews')->insert([
             'userId' => "1",
             'userFirst'=>"User",
@@ -61,5 +62,6 @@ class ReviewsTableSeeder extends Seeder
             'description' => "Fixed my house",
 
         ]);
+        */
     }
 }

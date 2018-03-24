@@ -27,23 +27,6 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'first' => 'Pro',
-            'last' =>'Bob',
-            'rating'=>'3.5',
-            'numOfRating'=>'2',
-            'address'=>'3421 Awesome Street',
-            'City' => 'Glendale',
-            'state'=>'California',
-            'phonenumber'=>'3235607784',
-            'role' => '1',
-            'licenseNum' => '412312',
-            'insuranceNum' => '312412',
-            'liabilityNum' => '453243',
-            'email' => 'pro@gmail.com',
-            'password' => bcrypt('password'),
-        ]);
-
-        DB::table('users')->insert([
             'first' => 'Adam',
             'last' =>'Nagao',
             'rating'=>'0',

@@ -8,6 +8,8 @@ use App\Order;
 use App\Http\Requests;
 use App\Product;
 use Cookie;
+use App\Notifications\CustomerSignedUp;
+use App\User;
 class OrderController extends Controller
 {
     /**
@@ -71,11 +73,39 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {       
-
+        //a user has created an order
         if (Auth::check()) {
             // The user is logged in...
             $id=Auth::id();
             Order::create(array_merge($request->all(), ['userId' => $id]));
+
+            $user = User::where('id',$id)->first();
+            $email = $user->email;
+            $first = $request->first;
+            $last = $request->last;
+            $description = $request->description;
+            $address = $request->address;
+            $city = $request->city;
+            $state = $request->state;
+            $phoneNumber = $request->phonenumber;
+
+            // The message
+            $message = "A new order has been created!\r\n" . "Name: " . $first . ", " . $last . 
+            "\r\n" . "Description: " . $description . "\r\n" . "Address: " . $address . "\r\n" . "City: " . $city . "\r\n" . "State: " . $state. "\r\n" . "Phone Number: " . $phoneNumber. "\r\n" . "Email: " . $email;
+
+            $proList = User::where('role','1')->get();
+
+            // In case any of our lines are larger than 70 characters, we should use wordwrap()
+            $message = wordwrap($message, 70, "\r\n");
+
+            ini_set("SMTP", "aspmx.l.google.com");
+            ini_set("sendmail_from", "axishomeimprovements@gmail.com");
+
+            foreach ($proList as $pro) {
+            
+                mail($pro->email, 'Axis Service: A new order has been created', $message);
+            }
+
             return redirect("/orders");
         }
     }
@@ -134,7 +164,6 @@ class OrderController extends Controller
         return redirect("/home");
 
     }
-
 
     /**
      * pro user has been choosen for the job
